@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding = UTF-8
+Name = Nemo File Manager
+Exec = /usr/bin/nemo
+Icon = nemo
+Type = Application
+Categories = Development
