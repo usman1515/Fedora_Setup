@@ -8,6 +8,7 @@ sudo dnf install -y discord
 sudo dnf install -y putty
 sudo dnf install -y kitty
 sudo dnf install -y gnome-tweaks
+sudo dnf install -y meld
 
 # install vscode
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -46,6 +47,10 @@ sudo dnf install -y ~/Downloads/VNC-Viewer-7.5.1-Linux-x64.rpm
 sudo dnf config-manager --set-enabled google-chrome
 sudo dnf install -y google-chrome-stable
 
+# install opera
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub -y com.opera.Opera
+
 # install slack
 wget -P ~/Downloads https://downloads.slack-edge.com/releases/linux/4.32.127/prod/x64/slack-4.32.127-0.1.el8.x86_64.rpm
 sudo dnf install -y ~/Downloads/slack-4.32.127-0.1.el8.x86_64.rpm
@@ -66,4 +71,4 @@ sudo dnf install -y ~/Downloads/balena-etcher-1.18.8.x86_64.rpm
 
 # install amberol
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub io.bassi.Amberol
+flatpak install flathub -y io.bassi.Amberol
