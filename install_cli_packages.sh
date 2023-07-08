@@ -14,7 +14,7 @@ sudo dnf install -y neofetch
 sudo dnf install -y cmatrix
 
 sudo dnf install -y tmux
-sudo dnf install -y vim-enhanced 
+sudo dnf install -y vim-enhanced
 sudo dnf install -y neovim
 sudo dnf install -y bat
 
@@ -23,5 +23,6 @@ sudo dnf install -y exa
 sudo dnf install -y ncdu
 sudo dnf install -y ImageMagick
 
-sudo dnf install -y htop
+sudo dnf install -y btop
 sudo dnf install -y unzip
+sudo dnf install -y tokei
