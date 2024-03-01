@@ -3,21 +3,26 @@
 - [Fedora Setup](#fedora-setup)
   - [Introduction](#introduction)
   - [1.   First things to do post installation](#1---first-things-to-do-post-installation)
-    - [Setup`dnf` configuration](#setupdnf-configuration)
+    - [1.1 Setup `dnf` configuration](#11-setup-dnf-configuration)
+    - [1.2 Copy `.bashrc` and `.bash_aliases` in `$HOME`](#12-copy-bashrc-and-bash_aliases-in-home)
   - [2.   Setup the Terminal](#2---setup-the-terminal)
+    - [2.1 Install git](#21-install-git)
+    - [2.2 Install Alacritty](#22-install-alacritty)
+    - [2.3 Install Kitty](#23-install-kitty)
   - [3.   Setup SSH](#3---setup-ssh)
   - [4.   Install Compilers](#4---install-compilers)
-  - [5.   Install CLI based applications](#5---install-cli-based-applications)
+  - [5.   Install CLI based tools and applications](#5---install-cli-based-tools-and-applications)
   - [6.   Install GUI based applications](#6---install-gui-based-applications)
-  - [7.   Copy `.bashrc` and `.bash_aliases` in `$HOME`](#7---copy-bashrc-and-bash_aliases-in-home)
-  - [8.   Customizations](#8---customizations)
-  - [9.   Install FOSS toolchains for HW development](#9---install-foss-toolchains-for-hw-development)
+  - [7.   Install Gtklp for remote printers](#7---install-gtklp-for-remote-printers)
+  - [8.   Install FOSS toolchains for Hardware development](#8---install-foss-toolchains-for-hardware-development)
+  - [9.   Customizations](#9---customizations)
+  - [10. Optional: Upgrade Fedora](#10-optional-upgrade-fedora)
 
 ## Introduction
 This repo is a guide to how I setup my desktop machine using Fedora as my distro of choice. I use Fedora mostly for hardware and software development. This is the perfect guide if you're migrating to Linux for the first time and don't know where to start.
 
 ## 1.   First things to do post installation
-### Setup`dnf` configuration
+### 1.1 Setup `dnf` configuration
 -   [Reference](https://dnf.readthedocs.io/en/latest/conf_ref.html)
 -   Open the file: `sudo vi /etc/dnf/dnf.conf`
 -   add the following lines:
@@ -36,23 +41,32 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
     -    install preload
     -    enable 3rd party reporsitories
 
+### 1.2 Copy `.bashrc` and `.bash_aliases` in `$HOME`
+    ```bash
+    cp -rv .bash_aliases .bashrc ~
+    ```
+
+
 ## 2.   Setup the Terminal
+### 2.1 Install git
 -   Install git: `sudo dnf install -y git`
--   Clone the [dotfiles](https://github.com/usman1515/dotfiles) repo.
+-   Clone this [dotfiles](https://github.com/usman1515/dotfiles) repo.
     ```bash
     git clone https://github.com/usman1515/dotfiles.git
     ```
--   Copy the git config from the dotfiles repo.
+-   Copy the git config from the dotfiles repo into the `$HOME` dir.
+
+### 2.2 Install Alacritty
 -   Install [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
     ```bash
     source install_nerd_fonts.sh
     ```
--   Install Alacritty
+-   Install alacritty
     ```bash
     sudo dnf install -y alacritty
     ```
--   copy the alacritty config folder from the dotfiles repo.
--   clone alacritty themes repo:
+-   Copy the `alacritty` config folder from the dotfiles repo into `.config` folder.
+-   Clone alacritty themes repo:
     ```bash
     git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
     ```
@@ -66,6 +80,14 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
         -   **Command:** `/usr/bin/alacritty/`
         -   **Shortcut:** Super + Enter
 
+### 2.3 Install Kitty
+-   Install kitty
+    ```bash
+    sudo dnf install -y kitty
+    ```
+-   Copy the `kitty` config folder from the `dotfiles` repo into `.config` folder.
+<!-- -   To setup SSH on kitty  -->
+
 ## 3.   Setup SSH
 -   Run the script `setup_ssh.sh` to generate SSH key.
     ```bash
@@ -75,13 +97,10 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
 ## 4.   Install Compilers
 -   [Languages & databases](https://developer.fedoraproject.org/tech.html)
     ```bash
-    # install language compilers
     source install_compilers.sh
-    # install docker
-    source install_docker.sh
     ```
 
-## 5.   Install CLI based applications
+## 5.   Install CLI based tools and applications
 -   To install all the CLI and TUI based applications run the following command.
     ```bash
     source install_cli_packages.sh
@@ -93,13 +112,29 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
     source install_gui_packages.sh
     ```
 
-## 7.   Copy `.bashrc` and `.bash_aliases` in `$HOME`
-    -   copy `.bashrc` and `.bash_aliases` in `$HOME` dir.
+## 7.   Install Gtklp for remote printers
+-   TO setup remote printers on your network that use GNU GTKLP GUI run the following script.
     ```bash
-    cp -rv .bash* ~
+    source install_printers.sh
     ```
 
-## 8.   Customizations
+## 8.   Install FOSS toolchains for Hardware development
+**OPTIONAL**: These are some of the tools that I use for hardware development.
+-   [GHDL](https://github.com/ghdl/ghdl) for VHDL simulation.
+-   [iVerilog](https://github.com/steveicarus/iverilog) for Verilog simulation.
+-   [Yosys](https://github.com/YosysHQ/yosys) for Verilog synthesis.
+-   [Verilator](https://github.com/verilator/verilator) for converting Verilog and SystemVerilog designs into a C++ or SystemC model.
+-   [Chisel](https://github.com/chipsalliance/chisel) for designing and testing RTL using Chisel/Scala.
+
+    ```bash
+    source install_ghdl.sh
+    source install_iverilog.sh
+    source install_yosys.sh
+    source install_verilator.sh
+    source install_chisel.sh
+    ```
+
+## 9.   Customizations
 -   Goto settings and do the following:
     -   Bluetooth
         -   Turn off
@@ -127,13 +162,8 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
         -   Pointing and clicking:
             -    Locate pointer: on
 
-## 9.   Install FOSS toolchains for HW development
--   **Optional**: These are some of the tools that I use for hardware development.
-1.  Install [iverilog](https://github.com/steveicarus/iverilog) for RTL simulation.
-2.  Install [yosys](https://github.com/YosysHQ/yosys) for RTL synthesis.
-3.  Install [verilator](https://github.com/verilator/verilator) for converting Verilog and SystemVerilog designs into a C++ or SystemC model.
+## 10. Optional: Upgrade Fedora
+-   To upgrade fedora run the following script
     ```bash
-    source install_iverilog.sh
-    source install_yosys.sh
-    source install_verilator.sh
+    source upgrade_fedora.sh
     ```
