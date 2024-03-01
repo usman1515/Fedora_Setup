@@ -95,7 +95,7 @@ sudo flatpak install flathub -y com.github.eneshecan.WhatsAppForLinux
 # install vlc
 sudo flatpak install -flathub -y org.videolan.VLC
 # install skype
-sudo flatpak install -y --from https://flathub.org/repo/appstream/com.skype.Client.flatpakref
+sudo flatpak install flathub -y com.skype.Client
 # install okular
 sudo flatpak install flathub -y org.kde.okular
 # install pdf editor

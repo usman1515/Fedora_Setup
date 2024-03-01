@@ -30,7 +30,7 @@ make check
 sudo make install
 
 # clean dump
-make clean disclean
+make clean distclean
 
 # uninstall iverilog
 # sudo make uninstall

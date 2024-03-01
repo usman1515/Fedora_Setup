@@ -5,6 +5,9 @@
 # enable access to both the free and the nonfree repositories
 sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
+# explicitly enable the repository
+sudo dnf config-manager --enable fedora-cisco-openh264
+
 # appstream metadata to enable users to install packages using Gnome/KDE
 sudo dnf groupupdate core
 

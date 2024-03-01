@@ -11,14 +11,15 @@ sudo dnf install -y git help2man perl python3 make autoconf g++ flex bison ccach
 git clone https://github.com/verilator/verilator.git
 
 # Every time you need to build:
-unset VERILATOR_ROOT
+unset VERILATOR_ROOT # for bash shell
 
 cd verilator
 
-git checkout master
-git pull origin master
+# checkout stable branch
+git pull
 git tag
 git branch -r
+git checkout master
 git checkout stable
 
 # create configure script
@@ -31,6 +32,9 @@ export VERILATOR_ROOT=$PWD
 ./configure
 
 # build verilator
+# compile
 make
+# test
 make test
+# install
 sudo make install
