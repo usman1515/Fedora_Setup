@@ -18,6 +18,8 @@ sudo dnf install -y tmux
 sudo dnf install -y vim-enhanced
 sudo dnf install -y neovim
 sudo dnf install -y bat
+sudo dnf copr enable -y varlad/zellij 
+sudo dnf install -y zellij
 
 sudo dnf install -y tree
 sudo dnf install -y exa
