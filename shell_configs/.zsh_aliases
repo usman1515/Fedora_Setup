@@ -1,0 +1,63 @@
+# Specify default editor. Possible values: vim, nano, ed etc.
+export EDITOR=nvim
+
+# PATHS
+export VERILATOR_ROOT=/home/usmansiddique/Tools/verilator/
+
+# source vivado
+source /tools/Xilinx/Vivado/2021.2/settings64.sh
+# source vitis HLS
+source /tools/Xilinx/Vitis/2021.2/settings64.sh
+
+# ====================================================== Aliases
+# display fortune quote inside cowsay tux
+alias fortune='fortune | cowsay -f tux'
+
+# Epic server ssh
+alias connect_epic_server='ssh ne298@nct-epic.ziti.uni-heidelberg.de'
+alias connect_rpi='ssh ne298@10.42.0.254'
+
+# some more ls aliases
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
+
+# add color support
+# alias grep='grep --color=auto'
+# alias fgrep='fgrep --color=auto'
+# alias egrep='egrep --color=auto'
+
+# display folders
+alias ls='exa -GxF --icons --group-directories-first --color=auto'
+alias ll='exa -lhF --icons --group-directories-first --color=auto'
+
+# display tree
+alias tree='tree -q --dirsfirst -C --sort name'
+
+# display all mounted drives
+alias mnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
+
+# count files in directory
+alias count='find . -type f | wc -l'
+
+# copy progress bar: cpy ./source ./destination
+alias cpv='rsync -ah --info=progress2'
+
+# give battery status
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "state|to full|percentage"'
+
+# run flopoco docker container
+alias flopoco="docker run --rm=true -v `pwd`:/flopoco_workspace flopoco"
+
+# change dir and view contents simultaneously
+function cl() {
+    DIR="$*";
+        # if no DIR given, go home
+        if [ $# -lt 1 ]; then
+                DIR=$HOME;
+    fi;
+    builtin cd "${DIR}" && \
+    # use your preferred ls command
+        ls
+}
+
