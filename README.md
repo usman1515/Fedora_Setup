@@ -9,6 +9,8 @@
     - [2.1 Install git](#21-install-git)
     - [2.2 Install Alacritty](#22-install-alacritty)
     - [2.3 Install Kitty](#23-install-kitty)
+    - [2.4 Customize BASH](#24-customize-bash)
+    - [2.5 Install and customize ZSH](#25-install-and-customize-zsh)
   - [3.   Setup SSH](#3---setup-ssh)
   - [4.   Install Compilers](#4---install-compilers)
   - [5.   Install CLI based tools and applications](#5---install-cli-based-tools-and-applications)
@@ -43,7 +45,7 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
 
 ### 1.2 Copy `.bashrc` and `.bash_aliases` in `$HOME`
     ```bash
-    cp -rv .bash_aliases .bashrc ~
+    cp -rv ./shell_configs/.bash_aliases ./shell_configs/.bashrc ~
     ```
 
 
@@ -70,10 +72,6 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
     ```bash
     git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
     ```
--   Install oh my posh
-    ```bash
-    source install_oh_my_posh.sh
-    ```
 -   Set terminal shortcut key
     -   Settings -> Keyboard -> View and customize shortcuts -> Custom shortcuts:
         -   **Name:** Open terminal
@@ -87,6 +85,22 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
     ```
 -   Copy the `kitty` config folder from the `dotfiles` repo into `.config` folder.
 <!-- -   To setup SSH on kitty  -->
+
+### 2.4 Customize BASH
+-   Install oh my posh for BASH shell.
+    ```bash
+    source install_oh_my_posh.sh
+    ```
+
+### 2.5 Install and customize ZSH
+-   Install oh my zsh for ZSH shell.
+    ```bash
+    source install_oh_my_zsh.sh
+    # copy these config  file sin $HOME dir
+    cp -rv ./shell_configs/.p10k.zsh ./shell_configs/.zsh_aliases ./shell_configs/.zshrc ~
+    ```
+-   Reboot PC.
+
 
 ## 3.   Setup SSH
 -   Run the script `setup_ssh.sh` to generate SSH key.
@@ -125,6 +139,7 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
 -   [Yosys](https://github.com/YosysHQ/yosys) for Verilog synthesis.
 -   [Verilator](https://github.com/verilator/verilator) for converting Verilog and SystemVerilog designs into a C++ or SystemC model.
 -   [Chisel](https://github.com/chipsalliance/chisel) for designing and testing RTL using Chisel/Scala.
+-   [FloPoCo](https://flopoco.org/) for generating Floating Point Cores.
 
     ```bash
     source install_ghdl.sh
@@ -132,6 +147,7 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
     source install_yosys.sh
     source install_verilator.sh
     source install_chisel.sh
+    source install_docker_flopoco.sh
     ```
 
 ## 9.   Customizations
