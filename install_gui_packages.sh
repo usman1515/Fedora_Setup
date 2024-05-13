@@ -102,7 +102,8 @@ sudo flatpak install flathub -y org.kde.okular
 sudo flatpak install flathub -y com.github.jeromerobert.pdfarranger
 # install opera
 # sudo flatpak install flathub -y com.opera.Opera
-
+# install bottles
+sudo flatpak install flathub com.usebottles.bottles
 
 
 # list all flatpak packages installed
