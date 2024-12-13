@@ -15,7 +15,7 @@ sudo dnf install -y fastfetch
 sudo dnf install -y cmatrix
 
 sudo dnf install -y tmux
-sudo dnf install -y vim-enhanced
+sudo dnf install -y vim-X11
 sudo dnf install -y neovim
 sudo dnf install -y bat
 sudo dnf copr enable -y varlad/zellij 
