@@ -135,6 +135,7 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
 ## 8.   Install FOSS toolchains for Hardware development
 **OPTIONAL**: These are some of the tools that I use for hardware development.
 -   [GHDL](https://github.com/ghdl/ghdl) for VHDL simulation.
+-   [NVC](https://github.com/nickg/nvc) for VHDL simulation.
 -   [iVerilog](https://github.com/steveicarus/iverilog) for Verilog simulation.
 -   [Yosys](https://github.com/YosysHQ/yosys) for Verilog synthesis.
 -   [Verilator](https://github.com/verilator/verilator) for converting Verilog and SystemVerilog designs into a C++ or SystemC model.
@@ -143,6 +144,7 @@ This repo is a guide to how I setup my desktop machine using Fedora as my distro
 
     ```bash
     source install_ghdl.sh
+    source install_nvc.sh
     source install_iverilog.sh
     source install_yosys.sh
     source install_verilator.sh
