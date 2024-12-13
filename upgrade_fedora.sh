@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Link: https://www.tecmint.com/fedora-upgrade-guide/
+
+VERSION=40
+
+fastfetch
+
 # upgrade packages
 sudo dnf upgrade -y --refresh
 
@@ -7,11 +13,15 @@ sudo dnf upgrade -y --refresh
 sudo dnf install dnf-plugin-system-upgrade
 
 # download the upgraded packages
-sudo dnf system-upgrade download --releasever=39
-sudo dnf system-upgrade download --allowerasing -y --releasever=39
+sudo dnf system-upgrade download --releasever=$(VERSION)
+sudo dnf system-upgrade download --allowerasing -y --releasever=$(VERSION)
 
-# trigger the upgarde process
+# trigger the upgrade process
 sudo dnf system-upgrade reboot
+
+# AFTER REBOOT
+
+fastfetch
 
 # update system configuration files
 sudo dnf install rpmconf
