@@ -17,7 +17,7 @@ sudo dnf install -y java-openjdk
 # install rust
 sudo dnf install -y rust cargo
 # install latex
-sudo dnf install -y texlive-scheme-basic
+sudo dnf install -y texlive-scheme-full
 
 
 
