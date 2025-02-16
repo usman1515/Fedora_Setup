@@ -10,6 +10,7 @@ sudo dnf install -y autoconf automake
 sudo dnf install -y cmake
 # install python
 sudo dnf install -y python3 python3-pip
+sudo dnf install -y python3-virtualenv
 # install lua
 sudo dnf install -y lua
 # install java
@@ -18,13 +19,15 @@ sudo dnf install -y java-openjdk
 sudo dnf install -y rust cargo
 # install latex
 sudo dnf install -y texlive-scheme-full
-
+# install nodejs
+sudo dnf install -y nodejs
 
 
 
 # ----- install docker
+sudo dnf install dnf-plugins-core
 # add the docker-ce repository
-sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf config-manager addrepo --from-repofile="https://download.docker.com/linux/fedora/docker-ce.repo"
 # install the docker engine
 sudo dnf install docker-ce docker-ce-cli containerd.io
 # start the docker service
@@ -38,9 +41,9 @@ sudo systemctl enable docker
 # create docker group
 sudo groupadd docker
 # add your user to docker group
-sudo usermod -aG docker $USER
-# activate changes to groups
-newgrp docker
+sudo gpasswd -a ${USER} docker
+# activate changes and restart docker
+sudo systemctl restart docker
 
 # running docker commands without sudo
 echo "Running hello-world without sudo"
