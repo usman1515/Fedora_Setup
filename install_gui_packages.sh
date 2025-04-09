@@ -52,6 +52,10 @@ sudo dnf install -y virt-manager
 # ----------------------------- Web browsers
 sudo dnf install -y chromium
 
+# install librewolf
+curl -fsSL https://repo.librewolf.net/librewolf.repo | pkexec tee /etc/yum.repos.d/librewolf.repo
+sudo dnf install librewolf
+
 # ----------------------------- Cloud storage
 # install dropbox
 wget -P ~/Downloads https://linux.dropbox.com/packages/fedora/nautilus-dropbox-2022.12.05-1.fedora.x86_64.rpm
