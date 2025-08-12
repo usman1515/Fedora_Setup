@@ -22,10 +22,11 @@ sudo dnf copr enable -y varlad/zellij
 sudo dnf install -y zellij
 
 sudo dnf install -y tree
-sudo dnf install -y exa
 sudo dnf install -y ncdu
 sudo dnf install -y ffmpeg
 sudo dnf install -y ImageMagick
+sudo dnf copr enable alternateved/eza
+sudo dnf install -y eza
 
 sudo dnf install -y btop
 sudo dnf install -y unzip
