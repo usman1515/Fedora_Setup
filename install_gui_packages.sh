@@ -1,42 +1,52 @@
 #!/bin/bash
 
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+NC='\e[0m'
+
 # ----------------------------- Text editors / IDEs
+echo -e "${YELLOW} Text editors / IDEs ${NC}"
 # install vscode
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-dnf check-update
-sudo dnf install -y code
-source install_vscode_extensions.sh
+# sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+# sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+# dnf check-update
+# sudo dnf install -y code
+# source install_vscode_extensions.sh
 
 # install vscodium
 sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h\n" | sudo tee -a /etc/yum.repos.d/vscodium.repo
-sudo dnf install codium
+sudo dnf install -y codium
 
 # sudo dnf install -y texmaker
 sudo dnf install -y meld
 
 # ----------------------------- PDF readers
+echo -e "${YELLOW} PDF readers ${NC}"
 sudo dnf install -y zathura zathura-pdf-mupdf zathura-cb zathura-djvu zathura-ps
 sudo dnf install -y xreader
 # sudo dnf install -y okular
 
 # ----------------------------- Chat clients
+echo -e "${YELLOW} Chat clients ${NC}"
 # sudo dnf install -y steam
 sudo dnf install -y discord
 # install zoom
 wget -P ~/Downloads https://zoom.us/client/5.15.2.4260/zoom_x86_64.rpm
 sudo dnf install -y ~/Downloads/zoom_x86_64.rpm
 # install slack
-wget -P ~/Downloads https://downloads.slack-edge.com/releases/linux/4.32.127/prod/x64/slack-4.32.127-0.1.el8.x86_64.rpm
-sudo dnf install -y ~/Downloads/slack-4.32.127-0.1.el8.x86_64.rpm
+# wget -P ~/Downloads https://downloads.slack-edge.com/releases/linux/4.32.127/prod/x64/slack-4.32.127-0.1.el8.x86_64.rpm
+# sudo dnf install -y ~/Downloads/slack-4.32.127-0.1.el8.x86_64.rpm
 
 # ----------------------------- File managers
+echo -e "${YELLOW} File managers ${NC}"
 # install nemo
 sudo dnf install -y nemo
 cp -rv nemo.desktop ~/.local/share/applications
 
 # ----------------------------- Remote desktop viewers
+echo -e "${YELLOW} Remote desktop viewers ${NC}"
 sudo dnf install -y putty
 sudo dnf install -y x2goclient cups-x2go
 # install remmina
@@ -48,25 +58,30 @@ wget -P ~/Downloads https://downloads.realvnc.com/download/file/viewer.files/VNC
 sudo dnf install -y ~/Downloads/VNC-Viewer-7.5.1-Linux-x64.rpm
 
 # ----------------------------- Torrent clients
-sudo dnf install -y qbittorrent
+echo -e "${YELLOW} Torrent clients ${NC}"
+# sudo dnf install -y qbittorrent
 
 # ----------------------------- Virtual Emulators
+echo -e "${YELLOW} Virtual Emulators ${NC}"
 sudo dnf install -y qemu
 sudo dnf install -y virt-manager
 
 # ----------------------------- Web browsers
+echo -e "${YELLOW} Web browsers ${NC}"
 sudo dnf install -y chromium
 
 # install librewolf
 curl -fsSL https://repo.librewolf.net/librewolf.repo | pkexec tee /etc/yum.repos.d/librewolf.repo
-sudo dnf install librewolf
+sudo dnf install -y librewolf
 
 # ----------------------------- Cloud storage
+echo -e "${YELLOW} Cloud storage ${NC}"
 # install dropbox
-wget -P ~/Downloads https://linux.dropbox.com/packages/fedora/nautilus-dropbox-2022.12.05-1.fedora.x86_64.rpm
-sudo dnf install -y ~/Downloads/nautilus-dropbox-2022.12.05-1.fedora.x86_64.rpm
+# wget -P ~/Downloads https://linux.dropbox.com/packages/fedora/nautilus-dropbox-2022.12.05-1.fedora.x86_64.rpm
+# sudo dnf install -y ~/Downloads/nautilus-dropbox-2022.12.05-1.fedora.x86_64.rpm
 
 # ----------------------------- Others
+echo -e "${YELLOW} Others ${NC}"
 sudo dnf install -y gtkwave
 # install balena etcher
 wget -P ~/Downloads https://github.com/balena-io/etcher/releases/download/v1.18.8/balena-etcher-1.18.8.x86_64.rpm
@@ -77,12 +92,17 @@ sudo dnf install -y keepassxc
 wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash
 
 # ----------------------------- Media
+echo -e "${YELLOW} Media ${NC}"
 sudo dnf install -y vlc
 
 
 
 
 # ==================== Install using Flatpak
+echo -e "${YELLOW} Install using Flatpak ${NC}"
+
+# install flatpak
+sudo dnf install flatpak
 
 # add remote repo flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
