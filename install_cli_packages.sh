@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo dnf install -y dnf-plugins-core
+
 sudo dnf install -y curl
 sudo dnf install -y wget
 
@@ -36,5 +38,8 @@ sudo dnf install -y tokei
 sudo dnf install -y NetworkManager-tui
 sudo dnf install -y qalculate
 
-sudo dnf copr enable -y pennbauman/ports
-sudo dnf install -y lf
+# sudo dnf copr enable -y pennbauman/ports
+# sudo dnf install -y lf
+
+sudo dnf copr enable -y lihaohong/yazi
+sudo dnf install -y yazi
