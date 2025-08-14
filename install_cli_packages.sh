@@ -25,7 +25,7 @@ sudo dnf install -y tree
 sudo dnf install -y ncdu
 sudo dnf install -y ffmpeg
 sudo dnf install -y ImageMagick
-sudo dnf copr enable alternateved/eza
+sudo dnf copr enable -y alternateved/eza
 sudo dnf install -y eza
 
 sudo dnf install -y btop
@@ -35,3 +35,6 @@ sudo dnf install -y tokei
 
 sudo dnf install -y NetworkManager-tui
 sudo dnf install -y qalculate
+
+sudo dnf copr enable -y pennbauman/ports
+sudo dnf install -y lf
