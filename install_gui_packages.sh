@@ -28,8 +28,8 @@ sudo dnf install -y zathura zathura-pdf-mupdf zathura-cb zathura-djvu zathura-ps
 sudo dnf install -y xreader
 # sudo dnf install -y okular
 
-# ----------------------------- Chat clients
-echo -e "${YELLOW} Chat clients ${NC}"
+# ----------------------------- Email and chat clients
+echo -e "${YELLOW} Email and chat clients ${NC}"
 # sudo dnf install -y steam
 sudo dnf install -y discord
 # install zoom
@@ -38,6 +38,8 @@ sudo dnf install -y ~/Downloads/zoom_x86_64.rpm
 # install slack
 # wget -P ~/Downloads https://downloads.slack-edge.com/releases/linux/4.32.127/prod/x64/slack-4.32.127-0.1.el8.x86_64.rpm
 # sudo dnf install -y ~/Downloads/slack-4.32.127-0.1.el8.x86_64.rpm
+# install thunderbird
+sudo dnf install -y thunderbird
 
 # ----------------------------- File managers
 echo -e "${YELLOW} File managers ${NC}"
@@ -48,7 +50,7 @@ cp -rv nemo.desktop ~/.local/share/applications
 # ----------------------------- Remote desktop viewers
 echo -e "${YELLOW} Remote desktop viewers ${NC}"
 sudo dnf install -y putty
-sudo dnf install -y x2goclient cups-x2go
+# sudo dnf install -y x2goclient cups-x2go      # only X11 compatible
 # install remmina
 sudo dnf copr enable hubbitus/remmina-next
 sudo dnf upgrade --refresh 'remmina*' 'freerdp*'
